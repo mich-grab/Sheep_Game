@@ -1,4 +1,8 @@
 const sheep = document.getElementById('sheep')
+const arrowUp = document.getElementById('up')
+const arrowLeft = document.getElementById('left')
+const arrowDown = document.getElementById('down')
+const arrowRight = document.getElementById('right')
 let str = 'hello'
 
 let position_X = 0
@@ -9,6 +13,7 @@ const field_Y_min = 0
 const field_X_max = 400
 const field_y_max = 400
 
+/*Listening keyboard arrows */
 
 document.addEventListener('keydown', (e) => {
     const key = e.key;
@@ -16,43 +21,71 @@ document.addEventListener('keydown', (e) => {
     switch (key) {
         case "ArrowLeft":
             if (position_X > field_X_min) {
-                position_X = position_X - 100
-                sheep.style.left = `${position_X}px`
-                console.log(position_X)
+                moveLeft()
             }
             break;
         case "ArrowRight":
             if (position_X < field_X_max - 100) {
-                position_X = position_X + 100
-                sheep.style.left = `${position_X}px`
-                console.log(position_X)
+                moveRight()
             }
             break;
         case "ArrowUp":
             if (position_Y > field_Y_min) {
-                position_Y = position_Y - 100
-                sheep.style.top = `${position_Y}px`
-                console.log(position_Y)
+                moveUp()
             }
             break;
         case "ArrowDown":
             if (position_Y < field_y_max - 100) {
-                position_Y = position_Y + 100
-                sheep.style.top = `${position_Y}px`
-                console.log(position_Y)
+                moveDown()
             }
             break;
     }
+})
 
-});
+/*Listening screen arrows */
+document.addEventListener('click', (e) => {
+    const key = e.path[0].classList[1]
+    switch (key) {
+        case 'fa-arrow-left':
+            if (position_X > field_X_min) {
+                moveLeft()
+            }
+            break;
+        case 'fa-arrow-right':
+            if (position_X < field_X_max - 100) {
+                moveRight()
+            }
+            break;
+        case 'fa-arrow-up':
+            if (position_Y > field_Y_min) {
+                moveUp()
+            }
+            break;
+        case 'fa-arrow-down':
+            if (position_Y < field_y_max - 100) {
+                moveDown()
+            }
+            break;
+    }
+})
 
 
-/* console.log(position_X)
-console.log(position_Y)
-if (position_X > 0) {
+function moveUp() {
+    position_Y = position_Y - 100
+    sheep.style.top = `${position_Y}px`
+}
+
+function moveLeft() {
     position_X = position_X - 100
     sheep.style.left = `${position_X}px`
-    console.log(position_X)
-    console.log(position_Y)
 }
- */
+
+function moveDown() {
+    position_Y = position_Y + 100
+    sheep.style.top = `${position_Y}px`
+}
+
+function moveRight() {
+    position_X = position_X + 100
+    sheep.style.left = `${position_X}px`
+}
