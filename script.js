@@ -44,24 +44,24 @@ document.addEventListener('keydown', (e) => {
 
 /*Listening screen arrows */
 document.addEventListener('click', (e) => {
-    const key = e.path[0].classList[1]
+    const key = e.target.id
     switch (key) {
-        case 'fa-arrow-left':
+        case 'left':
             if (position_X > field_X_min) {
                 moveLeft()
             }
             break;
-        case 'fa-arrow-right':
+        case 'right':
             if (position_X < field_X_max - 100) {
                 moveRight()
             }
             break;
-        case 'fa-arrow-up':
+        case 'up':
             if (position_Y > field_Y_min) {
                 moveUp()
             }
             break;
-        case 'fa-arrow-down':
+        case 'down':
             if (position_Y < field_y_max - 100) {
                 moveDown()
             }
