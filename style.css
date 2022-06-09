@@ -75,7 +75,12 @@ body {
      border: 1px solid #000;
      padding: 2px;
    }
+
    .container_instruction_row_icon:hover {
     background-color: #bdd2e7;
 
+  }
+
+  .fa-solid {
+    pointer-events: none;
   }
