@@ -4,6 +4,7 @@ const arrowUp = document.getElementById('up')
 const arrowLeft = document.getElementById('left')
 const arrowDown = document.getElementById('down')
 const arrowRight = document.getElementById('right')
+const sheepScore = document.getElementById('display_score')
 
 let score = 0
 
@@ -99,12 +100,18 @@ function generateFood() {
 /*Check if sheep is in food location*/
 function checkSheepAndFood() {
     if (position_X == position_X_food && position_Y == position_Y_food) {
-        console.log('sheep ate food')
+
         generateFood()
-        return true
+        updateScore()
     }
 }
 
+/*AddScore*/
+function updateScore() {
+    score += 1
+    sheepScore.innerText = `Score: ${score}`
+
+}
 
 
 /*Functions for moving */
