@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 *{
     box-sizing: border-box;
@@ -6,13 +6,21 @@
 }
 body {
   background-color: #00642d;
-    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin:0;
+    color: #fff;
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  color: #fff;
+  font-size: 50px;
+
 }
 
 .container {
@@ -55,6 +63,16 @@ body {
           width: 100px; 
           height: 100px;
           background-image: url('img/5a21c0059d2600.4237821315121612856437.png');
+          background-size: cover;
+          z-index: 10;
+        }
+        .container_fence{
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100px; 
+          height: 100px;
+          background-image: url('img/5a1d1c0e79d409.629516961511857166499.png');
           background-size: cover;
           z-index: 10;
         }
