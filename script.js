@@ -6,6 +6,10 @@ const arrowLeft = document.getElementById('left')
 const arrowDown = document.getElementById('down')
 const arrowRight = document.getElementById('right')
 const sheepScore = document.getElementById('display_score')
+const sheepTime = document.getElementById('display_time')
+const startBtn = document.getElementById('start_Btn')
+
+let gameOn = false
 
 let score = 0
 
@@ -27,6 +31,22 @@ const field_y_max = 400
 
 generateFood()
 generateFence()
+
+
+/*Start Game */
+
+startBtn.addEventListener('click', () => {
+    if (gameOn == false) {
+        gameOn = true
+    } else {
+        startBtn.innerText = 'Stop'
+
+    }
+})
+
+
+/*Starting a timer */
+
 
 /*Listening keyboard arrows */
 
