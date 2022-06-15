@@ -12,6 +12,7 @@ const startBtn = document.getElementById('start_Btn')
 let gameOn = false
 
 let score = 0
+let timer = 60
 
 let position_X = 0
 let position_Y = 0
@@ -38,14 +39,33 @@ generateFence()
 startBtn.addEventListener('click', () => {
     if (gameOn == false) {
         gameOn = true
-    } else {
         startBtn.innerText = 'Stop'
 
+
+        if (timer != 0) {
+            setInterval(timeCounter, 1000)
+        }
+    }
+    else {
+        gameOn = false
+        startBtn.innerText = 'Start'
+        console.log('stop')
     }
 })
 
 
 /*Starting a timer */
+
+function timeCounter() {
+
+    if (timer > 0) {
+        sheepTime.innerText = `Time left: ${timer} sec`
+        timer -= 1
+    } else {
+
+    }
+
+}
 
 
 /*Listening keyboard arrows */
