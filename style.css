@@ -77,6 +77,40 @@ h1 {
           z-index: 10;
         }
 
+.container-info {
+  width: 100%;
+  background-color: #fcce00;
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+
+
+}
+
+  .container-info__start_Btn {
+    width: 80%;
+    height: 80%;
+    margin: 5%;
+    background-color: #fff;
+    font-size: 2rem;
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+    border-radius: 10px;
+    
+
+  }
+
+  .container-info__display_score {
+    font-size: 20px;
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+  }
+
+  .container-info__display_time {
+    font-size: 20px;
+    font-family: 'Lobster', cursive;
+    font-weight: 40
+  }
+
 .container_instruction {
   display: flex;
   flex-direction: row;
