@@ -13,6 +13,7 @@ let gameOn = false
 
 let score = 0
 let timer = 60
+let timerId
 
 let position_X = 0
 let position_Y = 0
@@ -36,22 +37,45 @@ generateFence()
 
 /*Start Game */
 
+
+
+
 startBtn.addEventListener('click', () => {
     if (gameOn == false) {
+
+        startGame(true)
         gameOn = true
         startBtn.innerText = 'Stop'
-
-
-        if (timer != 0) {
-            setInterval(timeCounter, 1000)
-        }
+        score = 0
+        sheepScore.innerText = `Score: ${score}`
+        generateFood()
+        generateFence()
     }
     else {
+
+        startGame(false)
         gameOn = false
         startBtn.innerText = 'Start'
-        console.log('stop')
+
     }
 })
+
+
+
+function startGame(status) {
+    console.log(timerId)
+
+    if (status == true) {
+        timerId = setInterval(timeCounter, 1000)
+    } else {
+        clearInterval(timerId)
+        timer = 60
+        sheepTime.innerText = `Time left: ${timer} s`
+    }
+
+
+}
+
 
 
 /*Starting a timer */
@@ -59,10 +83,16 @@ startBtn.addEventListener('click', () => {
 function timeCounter() {
 
     if (timer > 0) {
-        sheepTime.innerText = `Time left: ${timer} sec`
         timer -= 1
-    } else {
+        sheepTime.innerText = `Time left: ${timer} s`
 
+    } else {
+        timer = 60
+        sheepTime.innerText = `Time left: 60 s`
+        clearInterval(timerId)
+        gameOn = false
+        startBtn.innerText = 'Start'
+        window.alert(`Game Over. Your score: ${score}`)
     }
 
 }
