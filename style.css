@@ -39,12 +39,36 @@ h1 {
     align-items: center;
     flex-wrap: wrap;
   }
+
+  .container_field__score {
+    visibility: hidden;
+    position: absolute;
+    background-color: #00642d;
+    width: 400px;
+    height: 400px;
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .active {
+    visibility: visible;
+  }
+
+  .container_field__score_congratulations{
+    font-size: 1.5rem;
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+  }
+
     .container_field_box {
       background-color: #00642d;
       width: 100px;
       height: 100px;
       border: 1px solid #25ad62;
     }
+
       .container_sheep{
         position: absolute;
         top: 0px;
@@ -66,6 +90,7 @@ h1 {
           background-size: cover;
           z-index: 10;
         }
+
         .container_fence{
           position: absolute;
           top: 0px;
@@ -79,10 +104,9 @@ h1 {
 
 .container-info {
   width: 100%;
-  background-color: #fcce00;
+  background-color: #fff;
   display: grid;
   grid-template-columns: 40% 30% 30%;
-
 
 }
 
@@ -90,10 +114,11 @@ h1 {
     width: 80%;
     height: 80%;
     margin: 5%;
-    background-color: #fff;
+    background-color: #00642d;
     font-size: 2rem;
     font-family: 'Lobster', cursive;
     font-weight: 400;
+    color: #fff;
     border-radius: 10px;
     
 
@@ -103,12 +128,14 @@ h1 {
     font-size: 20px;
     font-family: 'Lobster', cursive;
     font-weight: 400;
+    color: #00642d;
   }
 
   .container-info__display_time {
     font-size: 20px;
     font-family: 'Lobster', cursive;
-    font-weight: 40
+    font-weight: 40;
+    color: #00642d;
   }
 
 .container_instruction {
