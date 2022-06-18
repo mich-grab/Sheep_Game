@@ -8,6 +8,8 @@ const arrowRight = document.getElementById('right')
 const sheepScore = document.getElementById('display_score')
 const sheepTime = document.getElementById('display_time')
 const startBtn = document.getElementById('start_Btn')
+const containerFieldScore = document.querySelector('.container_field__score')
+const containerFieldScoreCongratulations = document.querySelector('.container_field__score_congratulations')
 
 let gameOn = false
 
@@ -48,14 +50,18 @@ startBtn.addEventListener('click', () => {
         startBtn.innerText = 'Stop'
         score = 0
         sheepScore.innerText = `Score: ${score}`
+        timer = 60
+        sheepTime.innerText = `Time left: ${timer} s`
         generateFood()
         generateFence()
+        containerFieldScore.classList.remove('active')
     }
     else {
 
         startGame(false)
         gameOn = false
         startBtn.innerText = 'Start'
+
 
     }
 })
@@ -69,8 +75,6 @@ function startGame(status) {
         timerId = setInterval(timeCounter, 1000)
     } else {
         clearInterval(timerId)
-        timer = 60
-        sheepTime.innerText = `Time left: ${timer} s`
     }
 
 
@@ -87,12 +91,11 @@ function timeCounter() {
         sheepTime.innerText = `Time left: ${timer} s`
 
     } else {
-        timer = 60
-        sheepTime.innerText = `Time left: 60 s`
         clearInterval(timerId)
         gameOn = false
         startBtn.innerText = 'Start'
-        window.alert(`Game Over. Your score: ${score}`)
+        containerFieldScore.classList.add('active')
+        containerFieldScoreCongratulations.innerText = `Congratulations, your score is: ${score}`
     }
 
 }
