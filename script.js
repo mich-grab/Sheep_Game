@@ -1,6 +1,7 @@
 const sheep = document.getElementById('sheep')
 const food = document.getElementById('food')
 const fence = document.getElementById('fence')
+const farmer = document.getElementById('farmer')
 const arrowUp = document.getElementById('up')
 const arrowLeft = document.getElementById('left')
 const arrowDown = document.getElementById('down')
@@ -26,6 +27,9 @@ let position_Y_food = 200
 let position_X_fence = 200
 let position_Y_fence = 300
 
+let position_X_farmer = 100
+let position_Y_farmer = 200
+
 const field_X_min = 0
 const field_Y_min = 0
 const field_X_max = 400
@@ -35,6 +39,7 @@ const field_y_max = 400
 
 generateFood()
 generateFence()
+generateFarmer()
 
 
 /*Start Game */
@@ -54,6 +59,7 @@ startBtn.addEventListener('click', () => {
         sheepTime.innerText = `Time left: ${timer} s`
         generateFood()
         generateFence()
+        generateFarmer()
         containerFieldScore.classList.remove('active')
     }
     else {
@@ -112,6 +118,7 @@ document.addEventListener('keydown', (e) => {
                 if (checkFence(1) == false) {
                     moveLeft()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -120,6 +127,7 @@ document.addEventListener('keydown', (e) => {
                 if (checkFence(2) == false) {
                     moveRight()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -128,6 +136,7 @@ document.addEventListener('keydown', (e) => {
                 if (checkFence(3) == false) {
                     moveUp()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -136,6 +145,7 @@ document.addEventListener('keydown', (e) => {
                 if (checkFence(4) == false) {
                     moveDown()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -152,6 +162,7 @@ document.addEventListener('click', (e) => {
                 if (checkFence(1) == false) {
                     moveLeft()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -160,6 +171,7 @@ document.addEventListener('click', (e) => {
                 if (checkFence(2) == false) {
                     moveRight()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -168,6 +180,7 @@ document.addEventListener('click', (e) => {
                 if (checkFence(3) == false) {
                     moveUp()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -176,6 +189,7 @@ document.addEventListener('click', (e) => {
                 if (checkFence(4) == false) {
                     moveDown()
                     checkSheepAndFood()
+                    checkSheepAndFarmer()
                 }
             }
             break;
@@ -193,6 +207,22 @@ function generateFood() {
     } else {
         food.style.left = `${position_X_food}px`
         food.style.top = `${position_Y_food}px`
+    }
+}
+
+/*Generate farmer in random location*/
+
+function generateFarmer() {
+    position_X_farmer = Math.floor(Math.random() * 4) * 100
+    position_Y_farmer = Math.floor(Math.random() * 4) * 100
+
+    if (position_X_farmer == position_X && position_Y_farmer == position_Y ||
+        position_X_farmer == position_X_food && position_Y_farmer == position_Y_food ||
+        position_X_farmer == position_X_fence && position_Y_farmer == position_Y_fence) {
+        generateFarmer()
+    } else {
+        farmer.style.left = `${position_X_farmer}px`
+        farmer.style.top = `${position_Y_farmer}px`
     }
 }
 
@@ -216,7 +246,19 @@ function checkSheepAndFood() {
     if (position_X == position_X_food && position_Y == position_Y_food) {
         generateFood()
         generateFence()
-        updateScore()
+        generateFarmer()
+        addPoint()
+    }
+}
+
+/*Check if sheep is in farmer location*/
+
+function checkSheepAndFarmer() {
+    if (position_X == position_X_farmer && position_Y == position_Y_farmer) {
+        generateFood()
+        generateFence()
+        generateFarmer()
+        removePoint()
     }
 }
 
@@ -261,8 +303,16 @@ function checkFence(direction) {
 
 /*AddScore*/
 
-function updateScore() {
+function addPoint() {
     score += 1
+    sheepScore.innerText = `Score: ${score}`
+
+}
+
+/*AddScore*/
+
+function removePoint() {
+    score -= 1
     sheepScore.innerText = `Score: ${score}`
 
 }
